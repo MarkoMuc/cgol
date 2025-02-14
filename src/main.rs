@@ -40,12 +40,13 @@ fn init(x_axis:u64 , y_axis:u64) -> Vec<Vec<Pos>>{
         }
         i += 1;
     }
+    cells[(y_axis/2 - 1) as usize][ (x_axis/2 + 1) as usize].s = State::Alive; 
+    cells[(y_axis/2 - 1) as usize][ (x_axis/2 + 2) as usize].s = State::Alive; 
+    cells[(y_axis/2) as usize][ (x_axis/2 + 1) as usize].s = State::Alive; 
+    cells[(y_axis/2) as usize][ (x_axis/2 + 2) as usize].s = State::Alive; 
+    cells[(y_axis/2 + 1) as usize][ (x_axis/2 + 1) as usize].s = State::Alive; 
+    cells[(y_axis/2 + 1) as usize][ (x_axis/2 + 2) as usize].s = State::Alive; 
 
-    for i in 0..y_axis {
-        for j in 0..x_axis {
-            
-        }
-    }
     cells
 }
 
