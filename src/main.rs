@@ -1,4 +1,6 @@
-use std::env;
+use std::{env, thread, time::Duration};
+
+const SLEEP_DURATION: u64= 400;
 
 #[derive(PartialEq)]
 enum State {
@@ -28,7 +30,7 @@ fn clear() {
 }
 
 fn init(x_axis:u64 , y_axis:u64) -> Vec<Vec<Pos>>{
-    let mut cells:Vec<Vec<Pos>> = Vec::new();
+    let mut cells:Vec<Vec<Pos>> = Vec::with_capacity(y_axis as usize);
     for _ in 0..y_axis {
         cells.push(Vec::new());
     }
@@ -36,7 +38,7 @@ fn init(x_axis:u64 , y_axis:u64) -> Vec<Vec<Pos>>{
 
     for cell in &mut cells {
         for j in 0..x_axis {
-            cell.push(Pos{x : i, y : j as usize, s : State::None});
+            cell.push(Pos{x : i, y : j as usize, s : State::Dead});
         }
         i += 1;
     }
@@ -115,6 +117,7 @@ fn cgol(x_axis:u64, y_axis:u64) {
         }
         clear();
         print_cells(&cells);
+        thread::sleep(Duration::from_millis(SLEEP_DURATION));
     }
 }
 
