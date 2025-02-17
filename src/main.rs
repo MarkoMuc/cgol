@@ -57,7 +57,7 @@ fn print_cells(cells:&Vec<Vec<Pos>>) {
         for p in cell {
             let out = match p.s {
                 State::Dead => ' ',
-                State::Alive => '#',
+                State::Alive => '⬛',
                 State::None => ' ',
             };
             print!("{}", out);
